@@ -2,13 +2,13 @@
   become: yes
   tasks:
           - name: Create a Directory
-            file: path=/ubuntu/chethan/webapp state=directory
+            file: path=/home/ubuntu/chethan/webapp state=directory
 
           - name: Install Tomcat Server
-            get_url: url=https://www.apache.org/dist/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz dest=/ubuntu/chethan/webapp mode=0777 owner=ubuntu group=ubuntu
+            get_url: url=https://www.apache.org/dist/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz dest=/home/ubuntu/chethan/webapp mode=0777 owner=ubuntu group=ubuntu
 
           - name: Extract Tomcat file
-            unarchive: src=/ubuntu/chethan/webapp/apache-tomcat-8.5.38.tar.gz dest=/ubuntu/chethan/webapp copy=no
+            unarchive: src=/home/ubuntu/chethan/webapp/apache-tomcat-8.5.38.tar.gz dest=/home/ubuntu/chethan/webapp copy=no
 
           - name: Update Ubuntu
             shell: sudo apt update
@@ -17,10 +17,10 @@
             shell: sudo apt install openjdk-8-jdk
 
           - name: Check the Java is installed or not
-            shell: java -version > /ubuntu/chethan/webapp/javaversion.log
+            shell: java -version > /home/ubuntu/chethan/webapp/javaversion.log
 
           - name: Capture java version to register
-            command: cat /ubuntu/chethan/webapp/javaversion.log
+            command: cat /home/ubuntu/chethan/webapp/javaversion.log
             register: result
 
           - name: Print Version
