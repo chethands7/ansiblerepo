@@ -1,0 +1,3 @@
+[manoj]
+40.113.198.56 ansible_user=ubuntu  ansible_ssh_pass=manoj@ilimi1
+
