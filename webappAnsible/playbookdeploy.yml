@@ -1,0 +1,11 @@
+- hosts: manoj
+  become: yes
+  tasks:
+          - name: Stop Tomcat server
+            command: bash /home/ubuntu/chethan/webapp/apache-tomcat-8.5.38/bin/shutdown.sh
+
+          - name: Copy .war file from jenkins to server
+            copy: src=/var/lib/jenkins/workspace/buildjob/webapplication/target/webapplication.war dest=/home/ubuntu/chethan/webapp/apache-tomcat-8.5.38/webapps remote_src=no 
+
+          - name: Start Tomcat server
+            command: bash /home/ubuntu/chethan/webapp/apache-tomcat-8.5.38/bin/startup.sh  
